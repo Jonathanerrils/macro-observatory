@@ -1,0 +1,109 @@
+{
+  "settings": {
+    "source": "Saved FRED snapshot",
+    "frequency": "Weekly",
+    "method": "pearson",
+    "minimum": 30,
+    "window": 30,
+    "transforms": {
+      "DEXUSEU": "return",
+      "DEXJPUS": "return",
+      "DTWEXBGS": "return",
+      "DGS2": "difference",
+      "DGS10": "difference",
+      "VIXCLS": "difference",
+      "SP500": "return",
+      "DCOILWTICO": "difference"
+    },
+    "date_range": [
+      "2022-01-07",
+      "2026-10-09"
+    ],
+    "point_in_time_safe": false,
+    "driver": "DEXUSEU",
+    "target": "DTWEXBGS",
+    "block": 5,
+    "replicates": 500,
+    "seed": 42,
+    "breakdown_window": 60,
+    "train_fraction": 0.7,
+    "max_lag": 8
+  },
+  "results": {
+    "correlation_interval": {
+      "correlation": -0.8692419415630643,
+      "lower": -0.8951816820678175,
+      "upper": -0.8351190290231947,
+      "overlap": 247,
+      "periods": 249,
+      "block_length": 5,
+      "replicates": 500,
+      "valid_replicates": 500,
+      "confidence": 0.95,
+      "seed": 42,
+      "method": "pearson"
+    },
+    "breakdown": {
+      "prior": {
+        "correlation": -0.8980250490550091,
+        "lower": -0.9305765126392653,
+        "upper": -0.8596415343186025,
+        "overlap": 60,
+        "periods": 60,
+        "block_length": 5,
+        "replicates": 500,
+        "valid_replicates": 500,
+        "confidence": 0.95,
+        "seed": 42,
+        "method": "pearson"
+      },
+      "recent": {
+        "correlation": -0.9526862193020135,
+        "lower": -0.9698584177324366,
+        "upper": -0.9283759660985497,
+        "overlap": 59,
+        "periods": 60,
+        "block_length": 5,
+        "replicates": 500,
+        "valid_replicates": 500,
+        "confidence": 0.95,
+        "seed": 43,
+        "method": "pearson"
+      },
+      "delta": -0.05466117024700434,
+      "delta_lower": -0.0972255161260768,
+      "delta_upper": -0.017170127274611584,
+      "prior_start": "2024-06-28 00:00:00",
+      "prior_end": "2025-08-15 00:00:00",
+      "recent_start": "2025-08-22 00:00:00",
+      "recent_end": "2026-10-09 00:00:00",
+      "interval_excludes_zero": true
+    },
+    "holdout": {
+      "selected_lag": 1,
+      "train_periods": 174,
+      "embargo_periods": 8,
+      "train_end": "2025-05-02 00:00:00",
+      "test_start": "2025-07-04 00:00:00",
+      "train_overlap": 172,
+      "test_overlap": 66,
+      "intercept": 0.0429615340394824,
+      "slope": -0.091752672977485,
+      "train_correlation": -0.13793205539150086,
+      "test_correlation": 0.08244628228259289,
+      "test_mse": 0.34822093754876265,
+      "baseline_mse": 0.3364464265706796,
+      "skill_vs_training_mean": -0.03499668906606601
+    },
+    "errors": {}
+  },
+  "panel_sha256": "c316741198812f956e37ad104b3f29e806d9d4d7a4a1cfd8ca8541c6fb2e5e88",
+  "limitations": [
+    "Latest-revised observation data; not point-in-time safe.",
+    "Bootstrap assumes local stationarity; block length and sample choice affect coverage.",
+    "Breakdown uses independent window resampling and ignores dependence across their boundary.",
+    "One chronological holdout; repeated user tuning compromises its independence.",
+    "Lag selection is exploratory. No corrected p-values, causality or tradable edge claimed.",
+    "OLS predicts transformed observations; no position sizing, costs or trading backtest."
+  ]
+}

@@ -1,3 +1,7 @@
+# Cross-Market Correlation Research Engine / Macro Observatory v2
+
+See [UPGRADE.md](UPGRADE.md) for upgrading an existing installation, research methodology and GitHub commands. The Research validation tab adds block-bootstrap uncertainty, correlation change intervals, and frozen chronological holdout forecasts.
+
 # Macro Observatory — overnight MVP
 
 A local Python research dashboard and correlation engine. Start with a clearly labelled synthetic demo, fetch latest FRED snapshots, or upload a wide CSV. No paid service or API key is required for the included FRED CSV adapter.
@@ -61,7 +65,7 @@ FRED observations are latest revised values. Retrieval timestamps and hashes pre
 
 Resampling uses the last available observation in each sample bin. Different markets may have different closing times and holidays. No forward filling occurs. Pairwise matrices can be non-positive-semidefinite because pairs use different observations: do not feed them directly into a portfolio optimizer. The rolling calculation requires every period in its window to have both observations; sparse data can therefore produce empty plots.
 
-Correlations and lead/lag scans are descriptive, not causal or verified forecasts. No statistical significance is claimed: serial dependence, overlapping windows and multiple testing require block-bootstrap uncertainty and out-of-sample evaluation. Recent/prior change threshold 0.30 is a UI heuristic, not a calibrated regime detector. Level correlations can be spurious. This version does not execute trades.
+Correlations and lead/lag scans are descriptive, not causal or verified forecasts. The v2 research tab adds approximate block-bootstrap intervals and one chronological holdout. Multiple testing and repeated tuning remain unresolved; no corrected significance claims are made. Recent/prior change threshold 0.30 is a UI heuristic, not a calibrated regime detector. Level correlations can be spurious. This version does not execute trades.
 
 ## Overnight completion plan
 
@@ -75,7 +79,7 @@ Correlations and lead/lag scans are descriptive, not causal or verified forecast
 
 1. Add ECB euro-area rates/inflation, IMF/World Bank country panels, and explicit frequency/unit/release metadata.
 2. Add ALFRED vintages and an as-of join layer, then validate point-in-time semantics.
-3. Add block-bootstrap intervals, false-discovery controls and walk-forward prediction tests.
+3. Extend the included bootstrap and chronological holdout with block-length sensitivity, multiple-testing controls and walk-forward prediction tests.
 4. Add EUR/USD differential features and separate valuation, catalyst, timing and risk views.
 5. Add provider integration tests, scheduling, logging and operational monitoring.
 

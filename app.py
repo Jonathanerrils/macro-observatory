@@ -61,7 +61,7 @@ matrix,counts=correlations(changes,method,minimum)
 a,b,c,d=st.columns(4)
 a.metric('Series',len(selected)); b.metric('Sample periods',len(changes))
 c.metric('Sampling',frequency); d.metric('Latest observation',raw.index.max().strftime('%d %b %Y'))
-tabs=st.tabs(['Macro monitor','Correlation engine','Pair laboratory','Data quality & export'])
+tabs=st.tabs(['Macro monitor','Correlation engine','Pair laboratory','Data quality & export','Research validation'])
 with tabs[0]:
     st.subheader('Indicator monitor')
     rows=[]
@@ -115,3 +115,7 @@ with tabs[3]:
     st.download_button('Download sample counts',counts.to_csv(),'sample_counts.csv','text/csv')
     st.download_button('Download research settings',json.dumps(config,indent=2),'research_settings.json','application/json')
     st.download_button('Download source panel',raw.to_csv(index_label='date'),'source_panel.csv','text/csv')
+
+with tabs[4]:
+    from macro.research_ui import render
+    render(changes,config)

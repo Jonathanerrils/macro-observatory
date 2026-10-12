@@ -1,0 +1,14 @@
+{
+  "source": "FRED latest revised observations",
+  "retrieved_utc": "2026-10-12T03:49:22.124525+00:00",
+  "series": [
+    "DEXUSEU",
+    "DTWEXBGS"
+  ],
+  "urls": [
+    "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DEXUSEU&cosd=2022-01-01",
+    "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DTWEXBGS&cosd=2022-01-01"
+  ],
+  "panel_sha256": "0132d7f7d1db185cbb094921bcf0c608788928584dd1c7c558374c338274002c",
+  "point_in_time_safe": false
+}

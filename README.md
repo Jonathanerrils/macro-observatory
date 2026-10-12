@@ -94,3 +94,16 @@ FRED observations/vintages: https://fred.stlouisfed.org/docs/api/fred/series_obs
 Streamlit: https://docs.streamlit.io/
 
 Dependencies are bounded major-version ranges, not an exact environment lock. A successful local install should be recorded with `python -m pip freeze` before extending the project.
+
+## Real-data research case studies
+
+Two weekly FRED studies separate contemporaneous correlation from out-of-sample forecasting performance.
+
+| Forecast setup | Same-week correlation | Selected lag | Holdout MSE skill vs training-mean baseline |
+| --- | ---: | ---: | ---: |
+| EUR/USD → USD/JPY | -0.475 | 7 weeks | -0.65% |
+| EUR/USD → Broad US dollar | -0.869 | 1 week | -3.50% |
+
+Neither lagged model beat its benchmark. The project retains these negative findings and documents bootstrap uncertainty, training-only lag selection, an embargo and frozen holdout forecasts. Latest-revised data and exploratory testing limit interpretation; no trading edge is claimed.
+
+See [the case-study index](CASE_STUDIES.md) for hypotheses, methods, reports, exact settings and limitations.
